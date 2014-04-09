@@ -1,5 +1,5 @@
 
-public class sorts<T extends Comparable<T>> {
+public class Sorts<T extends Comparable<T>> {
       
 
    /******************************************************

@@ -1,5 +1,5 @@
 
-public class searches<T extends Comparable<T>>{
+public class Searches<T extends Comparable<T>>{
 
     /* Performs search for item on sorted array.
     * --Sets hi and low indices and checks the midpoint. 

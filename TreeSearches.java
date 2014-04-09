@@ -2,7 +2,7 @@ import java.util.Stack;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class treeSearches<T extends Comparable<T>>{
+public class TreeSearches<T extends Comparable<T>>{
 
     /*
     * Method that finds a given target in a generic tree using the 
