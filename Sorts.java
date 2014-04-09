@@ -99,7 +99,7 @@ public class Sorts<T extends Comparable<T>> {
         while(swapped){
             swapped = false;
 
-            for(int i = 1; i < length - 1; i++){
+            for(int i = 1; i < length; i++){
                 
                 if(arr[i - 1].compareTo(arr[i]) > 0){
                         T temp = arr[i];
