@@ -1,7 +1,7 @@
 public class Tree<T extends Comparable<T>>{	
 	
     private Node<T> head;
-    private int n; // n-ary degree, defaults to binary if none given.
+    private int n; // the n-ary degree, defaults to binary if none given.
     
     public Tree(Node<T> head, int n){
         this.head = head;
@@ -63,7 +63,9 @@ public class Tree<T extends Comparable<T>>{
     * and checks for target.
     * If child is not target, recursively calls function with it as new parentNode. 
     * 
-    * @param parentNode The 
+    * @param parentNode The parent node to  start searching from.
+    * @param target The target node to search for.
+    * @return The Node if found, null if not. 
     */
     private Node<T> cycleTree(Node<T> parentNode, Node<T> target){
             Node<T> success = null;
