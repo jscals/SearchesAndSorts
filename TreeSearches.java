@@ -23,7 +23,7 @@ public class TreeSearches<T extends Comparable<T>>{
         while(nodes.size() != 0){
             Node<T> current = nodes.poll();
             
-            if(current.getValue().equals(target)){
+            if(current.equals(target)){
                 return current;
             }
             
@@ -45,14 +45,14 @@ public class TreeSearches<T extends Comparable<T>>{
     * @return if found, returns the target node.
     *         if not found, returns null.
     */
-    public Node<T> DepthFirstSeach(Tree<T> tree, Node<T> target){
+    public Node<T> DepthFirstSearch(Tree<T> tree, Node<T> target){
     	Stack<Node<T>> nodes = new Stack<Node<T>>();
         nodes.add(tree.getHead());
         
         while(nodes.size() != 0){
             Node<T> current = nodes.pop();
             
-            if(current.getValue().equals(target)){
+            if(current.equals(target)){
                 return current;
             }
             
