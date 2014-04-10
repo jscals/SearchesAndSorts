@@ -190,7 +190,7 @@ public class Sorts<T extends Comparable<T>> {
     
    
     
-    /* 
+   /* 
     * Method that sorts the given array using the Heap Sort algorithm
     * 
     * - Uses a helper function maxHeapify() to initally build a max heap out of 
@@ -202,7 +202,7 @@ public class Sorts<T extends Comparable<T>> {
     * best, average, worst-- O(nlogn)
     *
     * @param arr The array to be sorted
-   */
+    */
     public void heapSort(T[] arr){
 
         int heapSize = arr.length;
@@ -259,6 +259,53 @@ public class Sorts<T extends Comparable<T>> {
             //heaped nodes still satisfy max heap property.
             maxHeapify(arr, heapSize, largest);
         }
+    }
+        
+    
+    
+   /* Divide and conquer algorithm, using a partition operation with a pivot element.
+    * USUALLY faster in practice then other O(nlogn) sort algorithms.
+    * 
+    * - Swaps elements in array so that all elements to right of pivot are 
+    *   greater and all elements to left are lower.
+    * - Recursively performs the swapping again with the array smaller than the 
+    *   current pivot, and the array greater than the current pivot.
+    * - Will continue until all subarrays have been sorted in place, and thus  
+    *   whole array is sorted.
+    *
+    * 
+    * best, average-- nlogn
+    * worst-- n^2 (rare)
+    * 
+    */
+    public void quickSort(T[] arr){
+        swapByPivotRecursive(arr, 0, arr.length -1);
+    }
 
+    private void swapByPivotRecursive(T[] arr , int low, int high){
+        int i = low; 
+        int j = high;
+        T pivot = arr[(low + ( (high - low)/2) )]; //Middle element
+
+        while(i <= j){
+
+            //Find elements that are less than and greater than pivot
+            while(arr[i].compareTo(pivot) < 0) i++; 
+            while(arr[j].compareTo(pivot) > 0) j--; 
+
+            //Swap them and inc/dec indices.
+            //Need = in if cause we need to increase our j and i to  
+            //exit loop, even if it means swapping with itself.
+            if(i <= j){ 
+                T temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                j--; i++;
+            }
+        }
+
+        //Recursion (send list thats less than pivot and list that is greater than pivot)
+        if(low < j) swapByPivotRecursive(arr, low, j); //j has been dec'd from high to pivot
+        if(i < high) swapByPivotRecursive(arr, i, high); //i has been inc'd from low to pivot
     }
 }
