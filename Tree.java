@@ -1,10 +1,22 @@
 public class Tree<T extends Comparable<T>>{	
 	
     private Node<T> head;
-
-    public Tree(){
-        this.head = null;
+    private int n; // n-ary degree, defaults to binary if none given.
+    
+    public Tree(Node<T> head, int n){
+        this.head = head;
+        this.n = n;
     }
+    public Tree(Node<T> head){
+        this(head,2);
+    }
+    public Tree(int n){
+        this(null,n);
+    }
+    public Tree(){
+        this(null,2);
+    }
+    
     
     public Node<T> getHead(){
         return this.head;
@@ -12,6 +24,10 @@ public class Tree<T extends Comparable<T>>{
     
     public void setHead(Node<T> head){
         this.head = head;
+    }
+    
+    public int getN(){
+        return this.n;
     }
 
     

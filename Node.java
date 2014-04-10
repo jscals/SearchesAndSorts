@@ -1,4 +1,5 @@
 import java.util.LinkedList; 
+import java.util.Objects;
 
 class Node<T extends Comparable<T>>{
     private T value;
@@ -23,8 +24,27 @@ class Node<T extends Comparable<T>>{
         return this.children;
     }
     
-    public boolean equals(Node<T> node){
-        return this.value.equals(node.getValue());
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Node){
+            Node<T> node = (Node<T>) obj;
+            return this.value.equals(node.getValue());
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + Objects.hashCode(this.value);
+        hash = 89 * hash + Objects.hashCode(this.parent);
+        hash = 89 * hash + Objects.hashCode(this.children);
+        return hash;
+    }
+    
+    @Override 
+    public String toString(){
+        return this.value.toString();
     }
 
     public void addChild(Node<T> child){
